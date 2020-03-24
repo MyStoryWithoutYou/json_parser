@@ -5,18 +5,15 @@ import com.intexsoft.services.ReadFromFileService;
 import java.io.IOException;
 
 public class Main {
+    private static final ReadFromFileService readFromFileService = new ReadFromFileService();
 
     public static void main(String[] args) throws IOException {
-        ReadFromFileService readFromFileService = new ReadFromFileService();
-
-        for (String s: readFromFileService.readFromFile()) {
-            if (!(s.contains("{") || s.contains("}") || s.contains("]"))) {
-                if (s.contains("[")) {
-                    s = s.replace("[", "");
-                }
-                s = s.replace(",", "");
-                s = s.replace("\"", "");
-                System.out.println(s);
+        for (String stringFromJSON: readFromFileService.readFromFile()) {
+            if ((!(stringFromJSON.contains("{") || stringFromJSON.contains("}") || stringFromJSON.contains("]"))) || stringFromJSON.contains("[")) {
+                stringFromJSON = stringFromJSON.replace("[", "");
+                stringFromJSON = stringFromJSON.replace(",", "");
+                stringFromJSON = stringFromJSON.replace("\"", "");
+                System.out.println(stringFromJSON);
             }
         }
     }

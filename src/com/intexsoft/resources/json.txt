@@ -1,21 +1,16 @@
 {
-    "orders": [
-        {
-            "orderno": "748745375",
-            "date": "June 30 1:54:23 AM",
-            "trackingno": "TN0039291",
-            "custid": "11045",
-            "customer": [
-                {
-                    "custid": "11045",
-                    "fname": "Sue",
-                    "lname": "Hatfield",
-                    "address": "1409 Silver Street",
-                    "city": "Ashland",
-                    "state": "NE",
-                    "zip": "68003",
-                }
-            ]
-        }
-    ]
+  "boolean": true,
+  "color": "gold",
+  "null": null,
+       "array": [
+           1,
+           2,
+           3
+         ],
+  "number": 123,
+  "object": {
+    "a": "b",
+    "c": "d"
+  },
+  "string": "Hello World"
 }
