@@ -14,7 +14,7 @@ public class ReadFromFileService implements ReadService {
         String line;
         List<String> lines = new ArrayList<>();
         while ((line = bufferedReader.readLine()) != null) {
-            lines.add(line.trim());
+            lines.add(line);
         }
         return lines.toArray(new String[lines.size()]);
     }

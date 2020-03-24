@@ -8,15 +8,16 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         ReadFromFileService readFromFileService = new ReadFromFileService();
-        StringBuilder json = new StringBuilder();
 
         for (String s: readFromFileService.readFromFile()) {
-            if (!(s.equals("{") || s.equals("[") || s.equals("}") || s.equals("]"))){
-                json.append(s);
+            if (!(s.contains("{") || s.contains("}") || s.contains("]"))) {
+                if (s.contains("[")) {
+                    s = s.replace("[", "");
+                }
+                s = s.replace(",", "");
+                s = s.replace("\"", "");
+                System.out.println(s);
             }
         }
-        String stringJson = json.toString();
-        StringBuilder newJson = new StringBuilder(stringJson.replace("\"", ""));
-        System.out.println(newJson);
     }
 }
