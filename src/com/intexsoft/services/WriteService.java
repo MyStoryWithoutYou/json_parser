@@ -1,5 +1,7 @@
 package com.intexsoft.services;
 
+import java.io.IOException;
+
 public interface WriteService {
-    static void write() { }
+    void write(String json) throws IOException;
 }

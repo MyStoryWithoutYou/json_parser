@@ -1,5 +1,7 @@
 package com.intexsoft.services;
 
+import java.io.IOException;
+
 public interface ReadService {
-    static String[] read(){return null;}
+    void read() throws IOException;
 }

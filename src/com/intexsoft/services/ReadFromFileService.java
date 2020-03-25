@@ -10,9 +10,11 @@ import java.util.List;
 
 public class ReadFromFileService implements ReadService {
     private static final String READ_PATH = "./src/com/intexsoft/resources/json.txt";
+
     @Getter
     private String[] linesFromJson;
 
+    @Override
     public void read() throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(READ_PATH));
         String line;

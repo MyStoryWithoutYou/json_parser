@@ -18,7 +18,7 @@ public class Main {
                 stringFromJson = stringFromJson.replace(",", "");
                 stringFromJson = stringFromJson.replace("\"", "");
                 System.out.println(stringFromJson);
-                writeIntoFileService.writeIntoFile(stringFromJson);
+                writeIntoFileService.write(stringFromJson);
             }
         }
     }
