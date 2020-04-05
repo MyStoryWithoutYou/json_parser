@@ -1,13 +1,16 @@
 package com.intexsoft.jsonParts;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
 @Getter
 @ToString
-@AllArgsConstructor
-public class JsonField<V> {
+public class JsonField<V> extends JsonPart{
     private String jsonKey;
     private V jsonValue;
+
+    public JsonField(String jsonKey, V jsonValue) {
+        this.jsonKey = jsonKey.replace("\"", "").trim();
+        this.jsonValue = jsonValue;
+    }
 }

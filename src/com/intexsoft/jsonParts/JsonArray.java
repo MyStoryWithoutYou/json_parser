@@ -1,4 +1,4 @@
 package com.intexsoft.jsonParts;
 
-public class JsonArray {
+public class JsonArray extends JsonPart{
 }
