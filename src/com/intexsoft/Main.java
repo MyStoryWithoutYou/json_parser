@@ -3,6 +3,7 @@ package com.intexsoft;
 import com.intexsoft.services.ReadFromFileService;
 import com.intexsoft.services.WriteIntoFileService;
 
+
 import java.io.IOException;
 
 public class Main {
@@ -10,16 +11,20 @@ public class Main {
     private static final WriteIntoFileService writeIntoFileService = new WriteIntoFileService();
 
     public static void main(String[] args) throws IOException {
+        char[] charsFromJson;
+        char charAfterColon;
         readFromFileService.read();
         String[] json = readFromFileService.getLinesFromJson();
         for (String stringFromJson : json) {
-            if ((!(stringFromJson.contains("{") || stringFromJson.contains("}") || stringFromJson.contains("]"))) || stringFromJson.contains("[")) {
-                stringFromJson = stringFromJson.replace("[", "");
-                stringFromJson = stringFromJson.replace(",", "");
-                stringFromJson = stringFromJson.replace("\"", "");
-                System.out.println(stringFromJson);
-                writeIntoFileService.write(stringFromJson);
+            stringFromJson = stringFromJson.replace(",", "");
+            charsFromJson = stringFromJson.toCharArray();
+            for (int counter = 0; counter < charsFromJson.length; counter++) {
+                if (charsFromJson[counter] == ':') {
+                    charAfterColon = charsFromJson[counter + 2];
+                    System.out.println(charAfterColon);
+                }
             }
+            System.out.println(stringFromJson);
         }
     }
 }
