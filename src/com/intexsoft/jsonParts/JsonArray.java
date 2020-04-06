@@ -7,8 +7,7 @@ import lombok.ToString;
 import java.util.ArrayList;
 
 @Getter
-@ToString
 @NoArgsConstructor
-public class JsonArray extends JsonPart{
+public class JsonArray {
     private ArrayList<JsonField> jsonArrayList = new ArrayList<>();
 }

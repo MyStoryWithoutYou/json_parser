@@ -10,13 +10,18 @@ import java.util.ArrayList;
 @Getter
 @Setter
 @NoArgsConstructor
-public class JsonField<V> extends JsonPart{
+public class JsonField<V> {
     private String jsonKey;
     private V jsonValue;
-    private ArrayList<JsonPart> jsonPartsList = new ArrayList<>();
+    private ArrayList<JsonField> jsonFieldList = new ArrayList<>();
 
     public JsonField(String jsonKey, V jsonValue) {
         this.jsonKey = jsonKey.replace("\"", "").trim();
         this.jsonValue = jsonValue;
+    }
+
+    @Override
+    public String toString() {
+        return jsonKey + ": " +jsonValue;
     }
 }

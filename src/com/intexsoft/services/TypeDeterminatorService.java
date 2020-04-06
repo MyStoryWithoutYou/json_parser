@@ -3,7 +3,6 @@ package com.intexsoft.services;
 import com.intexsoft.jsonParts.JsonArray;
 import com.intexsoft.jsonParts.JsonField;
 import com.intexsoft.jsonParts.JsonObject;
-import com.intexsoft.jsonParts.JsonPart;
 import lombok.Getter;
 
 import java.io.IOException;
@@ -38,20 +37,18 @@ public class TypeDeterminatorService {
 
                     switch (charAfterColon) {
                         case '[':
-                            while ((stringFromJson.equals("]"))) {
+
+                            while (!(stringFromJson.equals("]"))) {
                                 jsonArray.getJsonArrayList().add(new JsonField(currentSplittedString[0], currentSplittedString[1]));
                             }
                             break;
                         case '{':
-                            while ((stringFromJson.equals("}"))) {
+                            while (!(stringFromJson.equals("}"))) {
                                 jsonObject.getJsonObjectList().add(new JsonField(currentSplittedString[0], currentSplittedString[1]));
                             }
                             break;
                         default:
-                            jsonField.setJsonKey(currentSplittedString[0]);
-                            jsonField.setJsonValue(currentSplittedString[1]);
-                            //jsonField = new JsonField(currentSplittedString[0], currentSplittedString[1]);
-                            jsonField.getJsonPartsList().add(jsonField);
+                            jsonField.getJsonFieldList().add(new JsonField(currentSplittedString[0], currentSplittedString[1]));
                             break;
                     }
                 }
