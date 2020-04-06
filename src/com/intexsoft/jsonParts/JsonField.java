@@ -2,12 +2,13 @@ package com.intexsoft.jsonParts;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 import java.util.ArrayList;
 
 @Getter
-@ToString
+@Setter
 @NoArgsConstructor
 public class JsonField<V> extends JsonPart{
     private String jsonKey;

@@ -9,27 +9,19 @@ import java.io.IOException;
 import java.util.ListIterator;
 
 public class Main {
-    private static final JsonField jsonField = new JsonField();
-    private static final JsonArray jsonArray = new JsonArray();
-    private static final JsonObject jsonObject = new JsonObject();
     private static final TypeDeterminatorService typeDeterminatorService = new TypeDeterminatorService();
+    private static final JsonField jsonFieldMain = typeDeterminatorService.getJsonField();
+    private static final JsonArray jsonArrayMain = typeDeterminatorService.getJsonArray();
+    private static final JsonObject jsonObjectMain = typeDeterminatorService.getJsonObject();
 
     public static void main(String[] args) throws IOException {
         typeDeterminatorService.determineType();
-        ListIterator iterator1 = jsonField.getJsonPartsList().listIterator();
-        ListIterator iterator2 = jsonArray.getJsonArrayList().listIterator();
-        ListIterator iterator3 = jsonObject.getJsonObjectList().listIterator();
+        ListIterator iterator1 = jsonFieldMain.getJsonPartsList().listIterator();
+        ListIterator iterator2 = jsonArrayMain.getJsonArrayList().listIterator();
+        ListIterator iterator3 = jsonObjectMain.getJsonObjectList().listIterator();
 
-        while (iterator1.hasNext()) {
-            System.out.println(iterator1.next());
-        }
-
-        while (iterator2.hasNext()) {
-            System.out.println(iterator2.next());
-        }
-
-        while (iterator3.hasNext()) {
-            System.out.println(iterator3.next());
-        }
+        jsonFieldMain.getJsonPartsList().forEach(System.out::println);
+        jsonArrayMain.getJsonArrayList().forEach(System.out::println);
+        jsonObjectMain.getJsonObjectList().forEach(System.out::println);
     }
 }
