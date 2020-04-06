@@ -7,7 +7,6 @@ import com.intexsoft.jsonParts.JsonPart;
 import lombok.Getter;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class TypeDeterminatorService {
     private char[] charsFromJson;
@@ -16,8 +15,6 @@ public class TypeDeterminatorService {
     @Getter
     private String[] json;
     private String[] currentSplittedString;
-    @Getter
-    private ArrayList<JsonPart> jsonPartsList = new ArrayList<>();
 
     public void determineType() throws IOException {
         readFromFileService.read();
@@ -36,17 +33,21 @@ public class TypeDeterminatorService {
                     switch (charAfterColon) {
                         case '[':
                             JsonArray jsonArray = new JsonArray();
+                            while ((stringFromJson.equals("]"))) {
+                                jsonArray.getJsonArrayList().add(new JsonField(currentSplittedString[0], currentSplittedString[1]));
+                            }
                             break;
                         case '{':
                             JsonObject jsonObject = new JsonObject();
+                            while ((stringFromJson.equals("}"))) {
+                                jsonObject.getJsonObjectList().add(new JsonField(currentSplittedString[0], currentSplittedString[1]));
+                            }
                             break;
                         default:
                             JsonField jsonField = new JsonField(currentSplittedString[0], currentSplittedString[1]);
-                            jsonPartsList.add(jsonField);
+                            jsonField.getJsonPartsList().add(jsonField);
                             break;
                     }
-
-                    System.out.println(charAfterColon);
                 }
             }
         }
