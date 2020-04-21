@@ -3,7 +3,6 @@ package com.intexsoft.jsonParts;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.ArrayList;
 
@@ -22,6 +21,6 @@ public class JsonField<V> {
 
     @Override
     public String toString() {
-        return jsonKey + ": " +jsonValue;
+        return "JsonField" + jsonKey + ": " +jsonValue;
     }
 }
